@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Sayangku</title>
+    <style>
+        /* CSS: MENGATUR TAMPILAN AGAR TIDAK GEPENG */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffe4e1; /* Pink pastel */
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px; /* Batas lebar maksimal agar rapi di HP */
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            color: #ff4d6d;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        /* GALERI FOTO */
+        .photo-card {
+            background: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.02);
+        }
+
+        .photo-card img {
+            width: 100%; /* Foto mengikuti lebar kotak */
+            height: auto; /* Agar tidak gepeng */
+            border-radius: 5px;
+            display: block;
+        }
+
+        .photo-card p {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* PESAN TEKS */
+        .message {
+            border-left: 4px solid #ff4d6d;
+            padding: 15px;
+            background: #fff0f3;
+            border-radius: 0 15px 15px 0;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .message h2 {
+            font-size: 1.1rem;
+            color: #c9184a;
+            margin-bottom: 8px;
+        }
+
+        .message p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        /* ANIMASI HATI JATUH */
+        .heart {
+            position: fixed;
+            top: -10vh;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="mySong" loop>
+        <source src="Bidadari.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <header>
+            <h1>Halo Sayang! ❤️</h1>
+            <p>Ini adalah tempat kecil untuk merayakan kita.</p>
+        </header>
+
+        <section class="gallery">
+            <div class="photo-card">
+                <img src="1.jpeg" alt="Foto 1">
+                <p>Cantikkk Bangetttt 😍😍😍</p>
+            </div>
+            <div class="photo-card">
+                <img src="2.jpeg" alt="Foto 2">
+                <p>"Bidadari tak bersayap datang padaku~~~ 🩷🩷🩷"</p>
+            </div>
+        </section>
+
+        <article class="message">
+            <h2>Pesan Untuk Poppi</h2>
+            <p>"Terima kasih sudah menjadi bagian terindah dalam hidupku. Aku sayang kamu lebih dari kata-kata yang bisa dituliskan di sini."</p>
+        </article>
+
+        <footer>
+            <p>Dibuat dengan ❤️ oleh [Ultramen mu]</p>
+            <p style="font-size: 0.6rem; margin-top: 10px;">(Klik layar untuk memutar musik)</p>
+        </footer>
+    </div>
+
+    <script>
+        const song = document.getElementById("mySong");
+        let hasPlayed = false;
+
+        // Fungsi membuat elemen hati/emoji secara acak
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            const emojis = ['❤️', '💖', '✨', '🌸', '🥰', '💕'];
+            heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 15 + "px";
+            
+            const duration = Math.random() * 3 + 4;
+            heart.style.animationDuration = duration + "s";
+            heart.style.opacity = Math.random() * 0.5 + 0.5;
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Jalankan hujan hati
+        setInterval(createHeart, 300);
+
+        // Fungsi saat layar diklik (Putar Lagu + Efek Hati)
+        document.addEventListener('click', (e) => {
+            // Putar lagu saat klik pertama
+            if (!hasPlayed) {
+                song.play().catch(err => console.log("Menunggu interaksi pengguna..."));
+                hasPlayed = true;
+            }
+
+            // Munculkan kumpulan hati di titik klik
+            for (let i = 0; i < 5; i++) {
+                const clickHeart = document.createElement('div');
+                clickHeart.classList.add('heart');
+                clickHeart.innerText = '❤️';
+                clickHeart.style.left = e.clientX + (Math.random() * 30 - 15) + "px";
+                clickHeart.style.top = e.clientY + "px";
+                clickHeart.style.animation = "fall 2s linear forwards";
+                document.body.appendChild(clickHeart);
+                
+                setTimeout(() => { clickHeart.remove(); }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

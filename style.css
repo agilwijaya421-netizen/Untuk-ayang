@@ -1,0 +1,119 @@
+/* Reset Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffe4e1; /* Warna pink pastel lembut */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden; /* Mencegah geser kanan-kiri */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px; /* Batasi lebar maksimal agar tidak gepeng di layar lebar */
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    color: #ff4d6d;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Galeri Foto */
+.gallery {
+    margin: 20px 0;
+}
+
+.photo-card {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+    border-radius: 10px;
+}
+
+.photo-card img {
+    width: 100%; /* Gambar akan mengikuti lebar card */
+    height: auto; /* Mencegah gambar gepeng */
+    border-radius: 5px;
+    display: block;
+}
+
+.photo-card p {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #444;
+    font-style: italic;
+}
+
+/* Pesan */
+.message {
+    border: 2px solid #ffb3c1;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #fff0f3;
+    margin-top: 20px;
+}
+
+.message h2 {
+    font-size: 1.1rem;
+    color: #c9184a;
+    margin-bottom: 10px;
+}
+
+.message p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #5f0f40;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Animasi Hati (Penting agar tidak berantakan) */
+.heart {
+    position: fixed;
+    top: -10vh;
+    pointer-events: none;
+    z-index: 0;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+.photo-card {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
